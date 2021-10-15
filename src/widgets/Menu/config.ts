@@ -120,19 +120,14 @@ export const socials = [
     items: [
       {
         label: "English",
-        href: "https://t.me/shrewdotcom",
+        href: "https://t.me/chipzio",
       }
     ],
   },
   {
     label: "Discord",
     icon: "DiscordIcon",
-    href: "https://discord.gg/qQW6PvKhEh",
-  },
-  {
-    label: "Reddit",
-    icon: "RedditIcon",
-    href: "https://www.reddit.com/r/shrewtoken/new/",
+    href: "https://discord.gg/tbAsqHv2yg",
   },
 ];
 

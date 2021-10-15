@@ -44,13 +44,13 @@ export const Variants: React.FC = () => {
   return (
     <BrowserRouter>
       <Row>
-        <Button as="a" href="https://shrew.com" target="_blank" rel="noreferrer">
+        <Button as="a" href="https://mychipz.io/" target="_blank" rel="noreferrer">
           As an anchor
         </Button>
         <Button as={Link} to="/router-link" variant="secondary">
           As an React Router link
         </Button>
-        <Button as="a" href="https://shrew.com" disabled>
+        <Button as="a" href="https://mychipz.io/" disabled>
           As an anchor (disabled)
         </Button>
       </Row>

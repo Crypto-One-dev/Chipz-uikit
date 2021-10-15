@@ -1,1 +1,1 @@
-# 🥞 Shrew Defi UIkit
+# 🥞 Chipz UIkit

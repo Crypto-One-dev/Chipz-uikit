@@ -344,7 +344,7 @@ var Icon$Q = function (props) {
 
 var Icon$P = function (props) {
     return (React.createElement(Svg, __assign({ viewBox: "0 0 32 32" }, props),
-        React.createElement("image", { width: "32", height: "32", href: "/shrew/logo.png" })));
+        React.createElement("image", { width: "32", height: "32", href: "/chipz/logo.png" })));
 };
 
 var Icon$O = function (props) {
@@ -1870,7 +1870,7 @@ var Icon$q = function (props) {
 var Logo$1 = function (_a) {
     var isDark = _a.isDark, props = __rest(_a, ["isDark"]);
     return (React.createElement(Svg, __assign({ viewBox: "0 0 300 100" }, props),
-        React.createElement("image", { width: "300", height: "100", href: isDark ? '/shrew/LogoDark.png' : '/shrew/LogoWhite.png' })));
+        React.createElement("image", { width: "300", height: "100", href: isDark ? '/chipz/chipz-logo-dark.png' : '/chipz/chipz-logo-white.png' })));
 };
 
 var Icon$p = function (props) {
@@ -2217,19 +2217,14 @@ var socials = [
         items: [
             {
                 label: "English",
-                href: "https://t.me/shrewdotcom",
+                href: "https://t.me/chipzio",
             }
         ],
     },
     {
         label: "Discord",
         icon: "DiscordIcon",
-        href: "https://discord.gg/qQW6PvKhEh",
-    },
-    {
-        label: "Reddit",
-        icon: "RedditIcon",
-        href: "https://www.reddit.com/r/shrewtoken/new/",
+        href: "https://discord.gg/tbAsqHv2yg",
     },
 ];
 var MENU_HEIGHT = 64;
@@ -2819,7 +2814,7 @@ var baseColors = {
 var brandColors = {
     binance: "#F0B90B",
 };
-var lightColors = __assign(__assign(__assign({}, baseColors), brandColors), { background: "#FAF9FA", backgroundDisabled: "#E9EAEB", contrast: "#001b2d", invertedContrast: "#FFFFFF", input: "#eeeaf4", tertiary: "#EFF4F5", text: "#bd1936", textwhite: "#FFFFFF", textDisabled: "#BDC2C4", textSubtle: "#bd1936", borderColor: "#E9EAEB", card: "#FFFFFF", gradients: {
+var lightColors = __assign(__assign(__assign({}, baseColors), brandColors), { background: "#FAF9FA", backgroundDisabled: "#E9EAEB", contrast: "#001b2d", invertedContrast: "#FFFFFF", input: "#eeeaf4", tertiary: "#EFF4F5", text: "#bd1936", textwhite: "#bd1936", textDisabled: "#BDC2C4", textSubtle: "#bd1936", borderColor: "#E9EAEB", card: "#bd1936", gradients: {
         bubblegum: "linear-gradient(139.73deg, #E6FDFF 0%, #F3EFFF 100%)",
     } });
 var darkColors = __assign(__assign(__assign({}, baseColors), brandColors), { secondary: "#bd1936", background: "#1b3a4f", backgroundDisabled: "#001b2d", contrast: "#FFFFFF", invertedContrast: "#001b2d", input: "#001b2d", primaryDark: "#bd1936", tertiary: "#001b2d", text: "#e2f4ff", textwhite: "#e2f4ff", textDisabled: "#3c4e5a", textSubtle: "#bbc8d0", borderColor: "#e2f4ff", card: "#00101b", gradients: {
