@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 
 const StyledNav = styled.nav<{ showMenu: boolean }>`
   position: fixed;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif !important;
   top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT}px`)};
   left: 0;
   transition: top 0.2s;
@@ -86,16 +87,16 @@ const Menu: React.FC<NavProps> = ({
       const isTopOfPage = currentOffset === 0;
       // Always show the menu when user reach the top
       if (isTopOfPage) {
-        setShowMenu(true);
+        // setShowMenu(true);
       }
       // Avoid triggering anything at the bottom because of layout shift
       else if (!isBottomOfPage) {
         if (currentOffset < refPrevOffset.current) {
           // Has scroll up
-          setShowMenu(true);
+          // setShowMenu(true);
         } else {
           // Has scroll down
-          setShowMenu(false);
+          // setShowMenu(false);
         }
       }
       refPrevOffset.current = currentOffset;
@@ -117,7 +118,7 @@ const Menu: React.FC<NavProps> = ({
         <Logo
           isPushed={isPushed}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
-          isDark={isDark}
+          isDark={true}
           href={homeLink?.href ?? "/"}
         />
         <Flex>
@@ -130,7 +131,7 @@ const Menu: React.FC<NavProps> = ({
           isPushed={isPushed}
           isMobile={isMobile}
           showMenu={showMenu}
-          isDark={isDark}
+          isDark={true}
           toggleTheme={toggleTheme}
           langs={langs}
           setLang={setLang}

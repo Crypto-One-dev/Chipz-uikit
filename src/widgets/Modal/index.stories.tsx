@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, useModal } from ".";
 import { InjectedProps } from "./types";
 import Button from "../../components/Button/Button";
+import HoverButton from "../../components/Button/HoverButton";
 import Heading from "../../components/Heading/Heading";
 
 export default {
@@ -18,6 +19,7 @@ const CustomModal: React.FC<CustomModalProps> = ({ title, onDismiss }) => (
   <Modal title={title} onDismiss={onDismiss}>
     <Heading>{title}</Heading>
     <Button>This button Does nothing</Button>
+    <HoverButton>This button is HoverButton made by Andy</HoverButton>
   </Modal>
 );
 

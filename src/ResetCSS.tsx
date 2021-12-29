@@ -63,6 +63,10 @@ const ResetCSS = createGlobalStyle`
   *::after {
     box-sizing: border-box;
   }
+  iframe body {
+    background-color: #2b283c;
+  }
+
   @font-face {
     font-family: Pepi-Regular;
     src: url(/Pepifont/PepiBlack-Regular.otf);
@@ -142,11 +146,6 @@ const ResetCSS = createGlobalStyle`
   @font-face {
     font-family: Pepi-UltraRegular;
     src: url(/Pepifont/PepiUltra-Regular.otf);
-  }
-  * {
-    font-family: Pepi-Regular, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   /* Scrollbar */
   ::-webkit-scrollbar {

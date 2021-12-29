@@ -5,6 +5,7 @@ export type CardHeaderProps = SpaceProps;
 
 const CardHeader = styled.div<CardHeaderProps>`
   background: ${({ theme }) => theme.card.cardHeaderBackground};
+  font-family: "IBM Plex Sans" !important;
 
   ${space}
 `;

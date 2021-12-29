@@ -38,24 +38,23 @@ const removePointerEvents = ({ disabled, as }: ThemedProps) => {
   return "";
 };
 
-const getButtonVariantProp = (prop: keyof ButtonThemeVariant) => ({
-  theme,
-  variant = variants.PRIMARY,
-}: ThemedProps) => {
-  return theme.button[variant][prop];
-};
+const getButtonVariantProp =
+  (prop: keyof ButtonThemeVariant) =>
+  ({ theme, variant = variants.PRIMARY }: ThemedProps) => {
+    return theme.button[variant][prop];
+  };
 
 const StyledButton = styled.button<ButtonProps>`
   align-items: center;
-  background-color: ${getButtonVariantProp("background")};
+  background: ${getButtonVariantProp("background")};
   border: ${getButtonVariantProp("border")};
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: ${getButtonVariantProp("boxShadow")};
   color: ${getButtonVariantProp("color")};
   cursor: pointer;
   display: inline-flex;
-  font-family: inherit;
-  font-size: 16px;
+  font-family: "IBM Plex Sans";
+  font-size: 18px;
   font-weight: 600;
   /* max-content instead of auto for Safari fix */
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "max-content")};
@@ -65,28 +64,30 @@ const StyledButton = styled.button<ButtonProps>`
   justify-content: center;
   outline: 0;
   padding: ${({ size }) => (size === "sm" ? "0 16px" : "0 24px")};
-  transition: background-color 0.2s;
   opacity: ${({ isLoading }) => (isLoading ? 0.5 : 1)};
 
-  &:hover:not(:disabled):not(.button--disabled):not(:active) {
-    background-color: ${getButtonVariantProp("backgroundHover")};
-    border-color: ${getButtonVariantProp("borderColorHover")};
-  }
-
-  &:focus:not(:active) {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.secondary};
-  }
-
-  &:active {
-    border-color: ${getButtonVariantProp("borderColorHover")};
-    background-color: ${getButtonVariantProp("backgroundActive")};
-    box-shadow: ${getButtonVariantProp("boxShadowActive")};
-  }
+  &:focus {
+    border: 1px solid black;
+    outline: 5px auto -webkit-focus-ring-color;
+  }  
 
   ${getDisabledStyles}
   ${removePointerEvents}
   ${space}
 `;
+/*
+&:active {
+  box-shadow: ${getButtonVariantProp("boxShadowActive")};
+}
+box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.secondary};
+border-color: ${getButtonVariantProp("borderColorHover")};
+background-color: ${getButtonVariantProp("backgroundActive")};
+
+&:hover:not(:disabled):not(.button--disabled):not(:active) {
+  background-color: ${getButtonVariantProp("backgroundHover")};
+  border-color: ${getButtonVariantProp("borderColorHover")};
+}
+*/
 
 StyledButton.defaultProps = {
   fullWidth: false,

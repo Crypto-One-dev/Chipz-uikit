@@ -10,6 +10,7 @@ interface ModalsContext {
 }
 
 const ModalWrapper = styled.div`
+  background-color: #00000063;
   display: flex;
   flex-direction: column;
   justify-content: center;

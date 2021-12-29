@@ -5,6 +5,7 @@ import capitalize from "lodash/capitalize";
 import Flex from "../Flex/Flex";
 import { LogoIcon, AddIcon, AutoRenewIcon } from "../Svg";
 import Button from "./Button";
+import HoverButton from "./HoverButton";
 import IconButton from "./IconButton";
 import { variants } from "./types";
 
@@ -34,6 +35,9 @@ export const Default: React.FC = () => {
           <Button variant={variant} size="sm">
             Small
           </Button>
+          <HoverButton variant={variant}>
+            Hover Button
+          </HoverButton>
         </Row>
       ))}
     </>

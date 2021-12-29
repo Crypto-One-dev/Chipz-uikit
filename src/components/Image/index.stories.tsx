@@ -30,7 +30,7 @@ export const ImageResponsive: React.FC = () => {
 export const Background: React.FC = () => {
   return (
     <div>
-      <BackgroundImage src="https://via.placeholder.com/800x400" width={800} height={400} mr="16px" />
+      <BackgroundImage src="/images/Background.png" width={800} height={400} mr="16px" />
       <div>Background Image</div>
     </div>
   );
@@ -39,7 +39,7 @@ export const Background: React.FC = () => {
 export const BackgroundResponsive: React.FC = () => {
   return (
     <div>
-      <BackgroundImage src="https://via.placeholder.com/800x400" width={800} height={400} responsive mr="16px" />
+      <BackgroundImage src="./images/Background.png" width={800} height={400} responsive mr="16px" />
       <div>Background Image</div>
     </div>
   );

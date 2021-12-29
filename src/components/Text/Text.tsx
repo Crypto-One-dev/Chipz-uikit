@@ -19,6 +19,7 @@ const Text = styled.div<TextProps>`
   color: ${getColor};
   font-size: ${getFontSize};
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif !important;
   line-height: 1.5;
   ${({ textTransform }) => textTransform && `text-transform: ${textTransform};`}
   ${space}

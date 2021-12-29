@@ -28,7 +28,9 @@ const getBoxShadow = ({ isActive, isSuccess, isWarning, theme }: StyledCardProps
 const StyledCard = styled.div<StyledCardProps>`
   background-color: ${({ theme }) => theme.card.background};
   border: ${({ theme }) => theme.card.boxShadow};
-  border-radius: 10px;
+  border-radius: 16px;
+  padding: 24px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
   box-shadow: ${getBoxShadow};
   color: ${({ theme, isDisabled }) => theme.colors[isDisabled ? "textDisabled" : "text"]};
   overflow: hidden;
