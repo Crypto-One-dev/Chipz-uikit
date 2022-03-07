@@ -20,7 +20,7 @@ const style = {
 const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
   ${({ size }) => style[size || sizes.MD]}
   font-weight:600;
-  font-family: "IBM Plex Sans";
+  font-family: "Roboto, sans-serif";
   line-height: 1.1;
 `;
 

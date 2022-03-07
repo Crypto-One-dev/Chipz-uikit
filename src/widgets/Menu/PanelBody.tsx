@@ -7,6 +7,9 @@ import Accordion from "./Accordion";
 import { MenuEntry, LinkLabel } from "./MenuEntry";
 import MenuLink from "./MenuLink";
 import { PanelProps, PushedProps } from "./types";
+import Skeleton from "../../components/Skeleton/Skeleton";
+import Text from "../../components/Text/Text";
+import { PancakeRoundIcon } from "../../components/Svg";
 
 interface Props extends PanelProps, PushedProps {
   isMobile: boolean;
@@ -22,7 +25,20 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
+const PriceLink = styled.a`
+  display: flex;
+  align-items: center;
+  svg {
+    transition: transform 0.3s;
+  }
+  :hover {
+    svg {
+      transform: scale(1.2);
+    }
+  }
+`;
+
+const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, priceLink, cakePriceUsd }) => {
   const location = useLocation();
 
   // Close the menu when a user clicks a link on mobile
@@ -48,14 +64,14 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
             >
               {isPushed &&
                 entry.items.map((item) => (
-                    <MenuEntry key={item.href} secondary isActive={item.href === location.pathname} onClick={handleClick}>
-                      {
-                        item.target === true ?
+                  <MenuEntry key={item.href} secondary isActive={item.href === location.pathname} onClick={handleClick}>
+                    {
+                      item.target === true ?
                         <MenuLink href={item.href} target="_blank">{item.label}</MenuLink>
                         :
                         <MenuLink href={item.href}>{item.label}</MenuLink>
-                      }
-                    </MenuEntry>
+                    }
+                  </MenuEntry>
                 ))}
             </Accordion>
           );
@@ -69,6 +85,21 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
           </MenuEntry>
         );
       })}
+      <div style={{
+        margin: "25px 20px 25px 25px",
+        borderTop: "1px solid rgba(255, 255, 255, 0.25)",
+        paddingTop: "32px",
+        paddingBottom: "32px"
+      }}>
+      {cakePriceUsd ? (
+        <PriceLink href={priceLink} target="_blank">
+          <PancakeRoundIcon width="24px" mr="8px" />
+          <Text color="textSubtle" bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
+        </PriceLink>
+      ) : (
+        <Skeleton width={80} height={24} />
+      )}
+      </div>
     </Container>
   );
 };

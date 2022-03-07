@@ -1,11 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { PancakeRoundIcon, CogIcon, SvgProps } from "../../components/Svg";
-import Text from "../../components/Text/Text";
+import { CogIcon, SvgProps } from "../../components/Svg";
 import Flex from "../../components/Flex/Flex";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import Link from "../../components/Link/Link";
-import Skeleton from "../../components/Skeleton/Skeleton";
 import Button from "../../components/Button/Button";
 import IconButton from "../../components/Button/IconButton";
 import MenuButton from "./MenuButton";
@@ -13,29 +11,17 @@ import * as IconModule from "./icons";
 import { socials, MENU_ENTRY_HEIGHT } from "./config";
 import { PanelProps, PushedProps } from "./types";
 
-interface Props extends PanelProps, PushedProps {}
+interface Props extends PanelProps, PushedProps { }
 
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 const { MoonIcon, SunIcon, LanguageIcon } = Icons;
 
 const Container = styled.div`
-  flex: none;
-  padding: 8px 4px;
-  background-color: ${({ theme }) => theme.nav.background};
-  border-top: solid 2px rgba(133, 133, 133, 0.1);
-`;
-
-const PriceLink = styled.a`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  svg {
-    transition: transform 0.3s;
-  }
-  :hover {
-    svg {
-      transform: scale(1.2);
-    }
-  }
+  background-color: ${({ theme }) => theme.nav.background};
 `;
 
 const SettingsEntry = styled.div`
@@ -50,8 +36,15 @@ const SocialEntry = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: ${MENU_ENTRY_HEIGHT}px;
-  padding: 0 16px;
+  padding: 25px;
+`;
+
+const CHIPZBOTTOM = styled.p`
+  cursor: pointer;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif !important;
+  font-size: 16px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.textSubtle};
 `;
 
 const PanelFooter: React.FC<Props> = ({
@@ -59,11 +52,9 @@ const PanelFooter: React.FC<Props> = ({
   pushNav,
   toggleTheme,
   isDark,
-  cakePriceUsd,
   currentLang,
   langs,
   setLang,
-  priceLink,
 }) => {
   if (!isPushed) {
     return (
@@ -78,28 +69,22 @@ const PanelFooter: React.FC<Props> = ({
   return (
     <Container>
       <SocialEntry>
-        {cakePriceUsd ? (
-          <PriceLink href={priceLink} target="_blank">
-            <PancakeRoundIcon width="24px" mr="8px" />
-            <Text color="textSubtle" bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
-          </PriceLink>
-        ) : (
-          <Skeleton width={80} height={24} />
-        )}
+
         <Flex>
           {socials.map((social, index) => {
             const Icon = Icons[social.icon];
-            const iconProps = { width: "24px", color: "textSubtle", style: { cursor: "pointer" } };
-            const mr = index < socials.length - 1 ? "8px" : 0;
+            const iconProps = { width: "25px", color: "textSubtle", style: { cursor: "pointer" } };
+            const mr = index < socials.length - 1 ? "30px" : 0;
             if (social.items) {
+              const item = social.items[0];
               return (
-                <Dropdown key={social.label} position="top" target={<Icon {...iconProps} mr={mr} />}>
-                  {social.items.map((item) => (
-                    <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
-                      {item.label}
-                    </Link>
-                  ))}
-                </Dropdown>
+                // <Dropdown key={social.label} position="top" target={<Icon {...iconProps} mr={mr} />}>
+                // {social.items.map((item) => (
+                <Link external key={item.label} href={item.href} aria-label={item.label} color="textSubtle">
+                  <Icon {...iconProps} mr={mr} />
+                </Link>
+                // ))}
+                // </Dropdown>
               );
             }
             return (
@@ -110,6 +95,7 @@ const PanelFooter: React.FC<Props> = ({
           })}
         </Flex>
       </SocialEntry>
+      <CHIPZBOTTOM>CHIPZ</CHIPZBOTTOM>
       {/* <SettingsEntry>
         { <Button variant="text" onClick={() => toggleTheme(!isDark)}>
           { alignItems center is a Safari fix }

@@ -7,6 +7,6 @@ export const light: NavTheme = {
 };
 
 export const dark: NavTheme = {
-  background: "rgb(32, 38, 57)",
+  background: "rgb(17, 21, 34)",
   hover: "#473d5d",
 };

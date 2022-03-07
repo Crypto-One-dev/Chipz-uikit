@@ -10,7 +10,7 @@ export const light: ButtonTheme = {
     backgroundHover: "",
     border: `1px solid #ec4899`,
     borderColorHover: "0px",
-    boxShadow: "rgb(219 39 119 / 24%) 0px 4px 10px;",
+    boxShadow: "rgb(143 23 84) 0px 8px 0px;",
     boxShadowActive: "",
     color: "#FFFFFF",
   },

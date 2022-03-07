@@ -38,6 +38,7 @@ const StyledToggle = styled.div<{ checked: boolean }>`
   align-items: center;
   background-color: ${({ theme, checked }) => checked ? "#ec4899" : "#001b2d"};
   // background-color: ${({ theme, checked }) => theme.colors[checked ? "successalt" : "input"]};
+  border: 1px solid #ec4899;
   border-radius: 24px;
   box-shadow: ${({ theme }) => theme.shadows.inset};
   cursor: pointer;
