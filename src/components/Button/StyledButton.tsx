@@ -44,32 +44,34 @@ const getButtonVariantProp =
     return theme.button[variant][prop];
   };
 
+// height: ${({ size }) => (size === "sm" ? "32px" : "48px")};
+// letter-spacing: 0.03em;
+// 
 const StyledButton = styled.button<ButtonProps>`
   align-items: center;
   background: ${getButtonVariantProp("background")};
   border: ${getButtonVariantProp("border")};
-  border-radius: 8px;
+  border-radius: 7px;
   box-shadow: ${getButtonVariantProp("boxShadow")};
   color: ${getButtonVariantProp("color")};
   cursor: pointer;
   display: inline-flex;
-  font-family: "IBM Plex Sans";
-  font-size: 18px;
+  font-family: "Roboto, sans-serif";
+  font-size: 15px;
   font-weight: 600;
   /* max-content instead of auto for Safari fix */
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "max-content")};
-  height: ${({ size }) => (size === "sm" ? "32px" : "48px")};
-  line-height: 1;
-  letter-spacing: 0.03em;
+  min-width: 64px;
+  line-height: 1.75;
   justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   outline: 0;
-  padding: ${({ size }) => (size === "sm" ? "0 16px" : "0 24px")};
+  padding: ${({ size }) => (size === "sm" ? "3px 30px" : "3px 30px")};
   opacity: ${({ isLoading }) => (isLoading ? 0.5 : 1)};
 
-  &:focus {
-    border: 1px solid black;
-    outline: 5px auto -webkit-focus-ring-color;
-  }  
+  &:hover {
+    background-color: rgb(190, 17, 105);
+  }
 
   ${getDisabledStyles}
   ${removePointerEvents}
@@ -79,6 +81,12 @@ const StyledButton = styled.button<ButtonProps>`
 &:active {
   box-shadow: ${getButtonVariantProp("boxShadowActive")};
 }
+
+&:focus {
+  border: 1px solid black;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
 box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.secondary};
 border-color: ${getButtonVariantProp("borderColorHover")};
 background-color: ${getButtonVariantProp("backgroundActive")};

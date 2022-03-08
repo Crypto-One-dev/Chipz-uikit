@@ -5,12 +5,12 @@ const { PRIMARY, SECONDARY, TERTIARY, TEXT, DANGER, SUBTLE, SUCCESS } = variants
 
 export const light: ButtonTheme = {
   [PRIMARY]: {
-    background: "linear-gradient(90deg, rgb(236, 72, 153) 0%, rgb(219, 39, 119) 100%);",
+    background: "rgb(206, 33, 121)",
     backgroundActive: "",
     backgroundHover: "",
-    border: `1px solid #ec4899`,
+    border: `0px`,
     borderColorHover: "0px",
-    boxShadow: "rgb(143 23 84) 0px 8px 0px;",
+    boxShadow: "rgb(143 23 84) 0px 8px 0px",
     boxShadowActive: "",
     color: "#FFFFFF",
   },
