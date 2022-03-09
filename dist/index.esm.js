@@ -223,7 +223,7 @@ Button.defaultProps = {
     disabled: false,
 };
 
-var IconButton = styled(Button)(templateObject_1$H || (templateObject_1$H = __makeTemplateObject(["\n  padding: 0;\n  width: ", ";\n"], ["\n  padding: 0;\n  width: ", ";\n"])), function (_a) {
+var IconButton = styled(Button)(templateObject_1$H || (templateObject_1$H = __makeTemplateObject(["\n  padding: 0;\n  width: ", ";\n  background-color: transparent !important;\n"], ["\n  padding: 0;\n  width: ", ";\n  background-color: transparent !important;\n"])), function (_a) {
     var size = _a.size;
     return (size === "sm" ? "32px" : "48px");
 });
@@ -712,7 +712,13 @@ var Card = function (_a) {
         children));
 };
 
-var CardBody = styled.div(templateObject_1$A || (templateObject_1$A = __makeTemplateObject(["\n  padding: 15px !important;\n  ", "\n"], ["\n  padding: 15px !important;\n  ", "\n"])), space);
+var CardBody = styled.div(templateObject_1$A || (templateObject_1$A = __makeTemplateObject(["\n  ", " {\n    padding: 0px;\n  }\n\n  ", " {\n    padding: 15px;\n  }\n\n  ", "\n"], ["\n  ", " {\n    padding: 0px;\n  }\n\n  ", " {\n    padding: 15px;\n  }\n\n  ", "\n"])), function (_a) {
+    var theme = _a.theme;
+    return theme.mediaQueries.xs;
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.mediaQueries.lg;
+}, space);
 CardBody.defaultProps = {
     p: "30px",
 };
@@ -1740,7 +1746,7 @@ var useParticleBurst = function (options) {
     return { initialize: initialize, teardown: teardown };
 };
 
-var StyledModal = styled.div(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  background: ", ";\n  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);\n  backdrop-filter: blur(6px);\n  // border: 1px solid ", ";\n  // border-radius: 32px;\n  border-radius: 0.75em;\n  padding-top: 0.4em;\n  padding-bottom: 1em;\n  padding-left: 1em;\n  padding-right: 1em;\n  width: 100%;\n  z-index: ", ";\n  overflow-y: auto;\n  ", " {\n    width: auto;\n    min-width: 360px;\n    max-width: 100%;\n  }\n"], ["\n  background: ", ";\n  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);\n  backdrop-filter: blur(6px);\n  // border: 1px solid ", ";\n  // border-radius: 32px;\n  border-radius: 0.75em;\n  padding-top: 0.4em;\n  padding-bottom: 1em;\n  padding-left: 1em;\n  padding-right: 1em;\n  width: 100%;\n  z-index: ", ";\n  overflow-y: auto;\n  ", " {\n    width: auto;\n    min-width: 360px;\n    max-width: 100%;\n  }\n"])), function (_a) {
+var StyledModal = styled.div(templateObject_1$g || (templateObject_1$g = __makeTemplateObject(["\n  background: ", ";\n  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);\n  backdrop-filter: blur(6px);\n  // border: 1px solid ", ";\n  // border-radius: 32px;\n  border-radius: 0.75em;\n  padding-top: 0.4em;\n  padding-bottom: 1em;\n  padding-left: 1em;\n  padding-right: 1em;\n  z-index: ", ";\n  overflow-y: auto;\n  \n  ", " {\n    width: 90%;\n  }\n\n  ", " {\n    width: 35%;\n  }\n"], ["\n  background: ", ";\n  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);\n  backdrop-filter: blur(6px);\n  // border: 1px solid ", ";\n  // border-radius: 32px;\n  border-radius: 0.75em;\n  padding-top: 0.4em;\n  padding-bottom: 1em;\n  padding-left: 1em;\n  padding-right: 1em;\n  z-index: ", ";\n  overflow-y: auto;\n  \n  ", " {\n    width: 90%;\n  }\n\n  ", " {\n    width: 35%;\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.modal.background;
 }, function (_a) {
@@ -1752,11 +1758,14 @@ var StyledModal = styled.div(templateObject_1$g || (templateObject_1$g = __makeT
 }, function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.xs;
+}, function (_a) {
+    var theme = _a.theme;
+    return theme.mediaQueries.lg;
 });
 var ModalHeader = styled.div(templateObject_2$7 || (templateObject_2$7 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid #2a2a2a;\n  align-items: center;\n  padding: 6px 0px 0px 12px;\n"], ["\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid #2a2a2a;\n  align-items: center;\n  padding: 6px 0px 0px 12px;\n"])));
 var ModalTitle = styled(Flex)(templateObject_3$3 || (templateObject_3$3 = __makeTemplateObject(["\n  align-items: center;\n  flex: 1;\n"], ["\n  align-items: center;\n  flex: 1;\n"])));
 var Modal = function (_a) {
-    var title = _a.title, onDismiss = _a.onDismiss, onBack = _a.onBack, children = _a.children, _b = _a.hideCloseButton, hideCloseButton = _b === void 0 ? false : _b, _c = _a.bodyPadding, bodyPadding = _c === void 0 ? "24px" : _c;
+    var title = _a.title, onDismiss = _a.onDismiss, onBack = _a.onBack, children = _a.children, _b = _a.hideCloseButton, hideCloseButton = _b === void 0 ? false : _b, _c = _a.bodyPadding, bodyPadding = _c === void 0 ? "30px" : _c;
     return (React.createElement(StyledModal, null,
         React.createElement(ModalHeader, null,
             React.createElement(ModalTitle, null,
@@ -1765,7 +1774,7 @@ var Modal = function (_a) {
                 React.createElement(Heading, null, title)),
             !hideCloseButton && (React.createElement(IconButton, { variant: "text", onClick: onDismiss, "aria-label": "Close the dialog", mr: "-16px" },
                 React.createElement(Icon$Q, { color: "primary" })))),
-        React.createElement(Flex, { flexDirection: "column", p: bodyPadding }, children)));
+        React.createElement(Flex, { flexDirection: "column", style: { justifyContent: 'center', alignItems: 'center' }, p: bodyPadding }, children)));
 };
 var templateObject_1$g, templateObject_2$7, templateObject_3$3;
 
@@ -2092,7 +2101,7 @@ MenuButton.defaultProps = {
 };
 var templateObject_1$d;
 
-var StyledLink = styled(Link$1)(templateObject_1$c || (templateObject_1$c = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  .mobile-icon {\n    width: 32px;\n    display:none;\n    ", " {\n      display: none;\n    }\n  }\n  .desktop-icon {\n    width: 156px;\n    display: block;\n    ", " {\n      display: block;\n    }\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  .mobile-icon {\n    width: 32px;\n    display:none;\n    ", " {\n      display: none;\n    }\n  }\n  .desktop-icon {\n    width: 156px;\n    display: block;\n    ", " {\n      display: block;\n    }\n  }\n"])), function (_a) {
+var StyledLink = styled(Link$1)(templateObject_1$c || (templateObject_1$c = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  .mobile-icon {\n    width: 32px;\n    display:block;\n    ", " {\n      display: none;\n    }\n  }\n  .desktop-icon {\n    width: 156px;\n    display: none;\n    ", " {\n      display: block;\n    }\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  .mobile-icon {\n    width: 32px;\n    display:block;\n    ", " {\n      display: none;\n    }\n  }\n  .desktop-icon {\n    width: 156px;\n    display: none;\n    ", " {\n      display: block;\n    }\n  }\n"])), function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.nav;
 }, function (_a) {
@@ -2313,7 +2322,8 @@ var MenuLink = function (_a) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     var Tag = isHttpLink ? "a" : NavLink;
     var props = isHttpLink ? { href: href } : { to: href };
-    return React.createElement(Tag, __assign({ style: { paddingLeft: '32px' } }, props, otherProps));
+    var style = isHttpLink ? { paddingLeft: '24px' } : null;
+    return React.createElement(Tag, __assign({ style: style }, props, otherProps));
 };
 
 var Icons$1 = IconModule;
@@ -2547,7 +2557,7 @@ var templateObject_1$5, templateObject_2$2;
 var AccountModal = function (_a) {
     var account = _a.account, logout = _a.logout, _b = _a.onDismiss, onDismiss = _b === void 0 ? function () { return null; } : _b;
     return (React.createElement(Modal, { title: "Your wallet", onDismiss: onDismiss },
-        React.createElement(Text, { fontSize: "20px", bold: true, style: { whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
+        React.createElement(Text, { fontSize: "20px", bold: true, style: { width: '100%', whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
         React.createElement(Flex, { mb: "32px" },
             React.createElement(LinkExternal, { small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
             React.createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),

@@ -24,13 +24,15 @@ const StyledModal = styled.div`
   padding-bottom: 1em;
   padding-left: 1em;
   padding-right: 1em;
-  width: 100%;
   z-index: ${({ theme }) => theme.zIndices.modal};
   overflow-y: auto;
+  
   ${({ theme }) => theme.mediaQueries.xs} {
-    width: auto;
-    min-width: 360px;
-    max-width: 100%;
+    width: 90%;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 35%;
   }
 `;
 
@@ -53,7 +55,7 @@ const Modal: React.FC<Props> = ({
   onBack,
   children,
   hideCloseButton = false,
-  bodyPadding = "24px",
+  bodyPadding = "30px",
 }) => (
   <StyledModal>
     {<ModalHeader>
@@ -71,7 +73,7 @@ const Modal: React.FC<Props> = ({
         </IconButton>
       )}
     </ModalHeader>}
-    <Flex flexDirection="column" p={bodyPadding}>
+    <Flex flexDirection="column" style={{justifyContent: 'center', alignItems: 'center'}} p={bodyPadding}>
       {children}
     </Flex>
   </StyledModal>

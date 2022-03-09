@@ -4,7 +4,14 @@ import { space, SpaceProps } from "styled-system";
 export type CardBodyProps = SpaceProps;
 
 const CardBody = styled.div<CardBodyProps>`
-  padding: 15px !important;
+  ${({ theme }) => theme.mediaQueries.xs} {
+    padding: 0px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    padding: 15px;
+  }
+
   ${space}
 `;
 
