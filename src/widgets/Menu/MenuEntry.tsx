@@ -32,7 +32,7 @@ const MenuEntry = styled.div<Props>`
   font-family: Roboto, sans-serif !important;
   font-size: 0.875rem;
   line-height: 1.75;
-  color: ${({isActive, theme }) => (isActive ? "#ffffff" : "rgb(85, 85, 85)")};
+  color: #ffffff;
   background-color: ${({ isActive }) => (isActive ? 'rgba(206, 33, 121, 0.1)' : null)};
   box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : "none")};
   
