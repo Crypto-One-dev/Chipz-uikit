@@ -2326,7 +2326,7 @@ var MenuLink = function (_a) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     var Tag = isHttpLink ? "a" : reactRouterDom.NavLink;
     var props = isHttpLink ? { href: href } : { to: href };
-    return React__default["default"].createElement(Tag, __assign({}, props, otherProps));
+    return React__default["default"].createElement(Tag, __assign({ style: { paddingLeft: '32px' } }, props, otherProps));
 };
 
 var Icons$1 = IconModule;
@@ -2344,7 +2344,7 @@ var PanelBody = function (_a) {
             var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
             if (entry.items) {
                 return (React__default["default"].createElement(Accordion, { key: entry.label, isPushed: isPushed, pushNav: pushNav, icon: iconElement, label: entry.label, initialOpenState: entry.initialOpenState, className: calloutClass }, isPushed &&
-                    entry.items.map(function (item) { return (React__default["default"].createElement(MenuEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick }, item.target === true ?
+                    entry.items.map(function (item) { return (React__default["default"].createElement(MenuEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, style: { paddingLeft: '32px' }, onClick: handleClick }, item.target === true ?
                         React__default["default"].createElement(MenuLink, { href: item.href, target: "_blank" }, item.label)
                         :
                             React__default["default"].createElement(MenuLink, { href: item.href }, item.label))); })));

@@ -2313,7 +2313,7 @@ var MenuLink = function (_a) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     var Tag = isHttpLink ? "a" : NavLink;
     var props = isHttpLink ? { href: href } : { to: href };
-    return React.createElement(Tag, __assign({}, props, otherProps));
+    return React.createElement(Tag, __assign({ style: { paddingLeft: '32px' } }, props, otherProps));
 };
 
 var Icons$1 = IconModule;
@@ -2331,7 +2331,7 @@ var PanelBody = function (_a) {
             var calloutClass = entry.calloutClass ? entry.calloutClass : undefined;
             if (entry.items) {
                 return (React.createElement(Accordion, { key: entry.label, isPushed: isPushed, pushNav: pushNav, icon: iconElement, label: entry.label, initialOpenState: entry.initialOpenState, className: calloutClass }, isPushed &&
-                    entry.items.map(function (item) { return (React.createElement(MenuEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, onClick: handleClick }, item.target === true ?
+                    entry.items.map(function (item) { return (React.createElement(MenuEntry, { key: item.href, secondary: true, isActive: item.href === location.pathname, style: { paddingLeft: '32px' }, onClick: handleClick }, item.target === true ?
                         React.createElement(MenuLink, { href: item.href, target: "_blank" }, item.label)
                         :
                             React.createElement(MenuLink, { href: item.href }, item.label))); })));
