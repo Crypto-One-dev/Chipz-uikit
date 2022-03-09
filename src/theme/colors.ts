@@ -49,7 +49,7 @@ export const darkColors: Colors = {
   text: "#ffffff",
   textwhite: "#ffffff",
   textDisabled: "#3c4e5a",
-  textSubtle: "#ffffff",
+  textSubtle: "#8D91A0",
   borderColor: "#e2f4ff",
   card: "rgb(26, 32, 51)",
   gradients: {

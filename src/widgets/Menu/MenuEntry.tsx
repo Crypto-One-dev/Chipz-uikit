@@ -18,7 +18,7 @@ const rainbowAnimation = keyframes`
 `;
 
 const LinkLabel = styled.div<{ isPushed: boolean }>`
-  color: ${({ isPushed, theme }) => (isPushed ? theme.colors.textSubtle : "transparent")};
+  color: ${({ isPushed, theme }) => (isPushed ? theme.colors.textwhite : "transparent")};
   transition: color 0.4s;
   flex-grow: 1;
 `;
@@ -27,14 +27,15 @@ const MenuEntry = styled.div<Props>`
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: ${MENU_ENTRY_HEIGHT}px;
   padding: ${({ secondary }) => (secondary ? "10px 8px 10px 24px" : "10px 8px 10px 24px")};
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif !important;
-  font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
-  background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : "transparent")};
-  color: ${({isActive, theme }) => (isActive ? '#ffffff' : 'rgb(85, 85, 85)')};
+  margin-bottom: 4px;
+  font-family: Roboto, sans-serif !important;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: ${({isActive, theme }) => (isActive ? "#ffffff" : "rgb(85, 85, 85)")};
+  background-color: ${({ isActive }) => (isActive ? 'rgba(206, 33, 121, 0.1)' : null)};
   box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : "none")};
-
+  
   a {
     display: flex;
     align-items: center;
@@ -47,7 +48,7 @@ const MenuEntry = styled.div<Props>`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.tertiary};
+    background-color: ${({ isActive }) => (isActive ? 'rgba(33, 150, 243, 0.04)' : null)};
   }
 
   // Safari fix

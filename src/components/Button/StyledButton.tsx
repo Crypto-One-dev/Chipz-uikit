@@ -56,7 +56,6 @@ const StyledButton = styled.button<ButtonProps>`
   color: ${getButtonVariantProp("color")};
   cursor: pointer;
   display: inline-flex;
-  font-family: "Roboto, sans-serif";
   font-size: 15px;
   font-weight: 600;
   /* max-content instead of auto for Safari fix */

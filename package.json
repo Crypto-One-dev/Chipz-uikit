@@ -81,6 +81,7 @@
     "lodash": "^4.17.20",
     "react-touch-ripple": "^0.2.1",
     "react-transition-group": "^4.4.1",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "touchmyripple": "^2.7.2"
   }
 }
