@@ -393,7 +393,7 @@ var Icon$J = function (props) {
 };
 
 var Icon$I = function (props) {
-    return (React__default["default"].createElement(Svg, __assign({ viewBox: "0 0 24 24" }, props),
+    return (React__default["default"].createElement(Svg, __assign({ viewBox: "0 0 16 2" }, props),
         React__default["default"].createElement("path", { d: "M10.56 1.7 L0.96 1.7 C0.52 1.7 0.16 1.2 0.16 0.7 C0.16 0.35 0.52 0 0.96 0 L10.56 0 C11 0 11.36 0.35 11.36 0.7 C11.36 1.2 11 1.7 10.56 1.7 Z" })));
 };
 
