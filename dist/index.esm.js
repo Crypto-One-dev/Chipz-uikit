@@ -380,7 +380,7 @@ var Icon$J = function (props) {
 };
 
 var Icon$I = function (props) {
-    return (React.createElement(Svg, __assign({ viewBox: "0 0 12 2" }, props),
+    return (React.createElement(Svg, __assign({ viewBox: "0 0 24 24" }, props),
         React.createElement("path", { d: "M10.56 1.7 L0.96 1.7 C0.52 1.7 0.16 1.2 0.16 0.7 C0.16 0.35 0.52 0 0.96 0 L10.56 0 C11 0 11.36 0.35 11.36 0.7 C11.36 1.2 11 1.7 10.56 1.7 Z" })));
 };
 
@@ -1762,7 +1762,7 @@ var StyledModal = styled.div(templateObject_1$g || (templateObject_1$g = __makeT
     var theme = _a.theme;
     return theme.mediaQueries.lg;
 });
-var ModalHeader = styled.div(templateObject_2$7 || (templateObject_2$7 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid #2a2a2a;\n  align-items: center;\n  padding: 6px 0px 0px 12px;\n"], ["\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid #2a2a2a;\n  align-items: center;\n  padding: 6px 0px 0px 12px;\n"])));
+var ModalHeader = styled.div(templateObject_2$7 || (templateObject_2$7 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid #2a2a2a;\n  align-items: center;\n  padding: 6px 0px 6px 12px;\n"], ["\n  display: flex;\n  align-items: center;\n  border-bottom: 1px solid #2a2a2a;\n  align-items: center;\n  padding: 6px 0px 6px 12px;\n"])));
 var ModalTitle = styled(Flex)(templateObject_3$3 || (templateObject_3$3 = __makeTemplateObject(["\n  align-items: center;\n  flex: 1;\n"], ["\n  align-items: center;\n  flex: 1;\n"])));
 var Modal = function (_a) {
     var title = _a.title, onDismiss = _a.onDismiss, onBack = _a.onBack, children = _a.children, _b = _a.hideCloseButton, hideCloseButton = _b === void 0 ? false : _b, _c = _a.bodyPadding, bodyPadding = _c === void 0 ? "30px" : _c;
