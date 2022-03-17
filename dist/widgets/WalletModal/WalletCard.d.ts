@@ -1,8 +1,9 @@
 import React from "react";
-import { Login, Config } from "./types";
+import { Config } from "./types";
 interface Props {
     walletConfig: Config;
-    login: Login;
+    activate: any;
+    connector: any;
     onDismiss: () => void;
     mb: string;
 }

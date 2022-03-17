@@ -10,6 +10,8 @@ var noop = require('lodash/noop');
 var debounce = require('lodash/debounce');
 var throttle = require('lodash/throttle');
 var reactRouterDom = require('react-router-dom');
+var injectedConnector = require('@web3-react/injected-connector');
+var walletconnectConnector = require('@web3-react/walletconnect-connector');
 var reactTransitionGroup = require('react-transition-group');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -82,7 +84,7 @@ var rotate$1 = styled.keyframes(templateObject_1$K || (templateObject_1$K = __ma
 var spinStyle = styled.css(templateObject_2$g || (templateObject_2$g = __makeTemplateObject(["\n  animation: ", " 2s linear infinite;\n"], ["\n  animation: ", " 2s linear infinite;\n"])), rotate$1);
 var Svg = styled__default["default"].svg(templateObject_3$8 || (templateObject_3$8 = __makeTemplateObject(["\n  fill: ", ";\n  flex-shrink: 0;\n\n  ", "\n  ", "\n"], ["\n  fill: ", ";\n  flex-shrink: 0;\n\n  ", "\n  ", "\n"])), function (_a) {
     var theme = _a.theme, color = _a.color;
-    return getThemeValue("colors.".concat(color), color)(theme);
+    return getThemeValue("colors." + color, color)(theme);
 }, function (_a) {
     var spin = _a.spin;
     return spin && spinStyle;
@@ -117,7 +119,7 @@ var Icon$16 = function (props) {
 
 var getColor$1 = function (_a) {
     var color = _a.color, theme = _a.theme;
-    return getThemeValue("colors.".concat(color), color)(theme);
+    return getThemeValue("colors." + color, color)(theme);
 };
 var getFontSize = function (_a) {
     var fontSize = _a.fontSize, small = _a.small;
@@ -128,7 +130,7 @@ var Text = styled__default["default"].div(templateObject_1$J || (templateObject_
     return (bold ? 600 : 400);
 }, function (_a) {
     var textTransform = _a.textTransform;
-    return textTransform && "text-transform: ".concat(textTransform, ";");
+    return textTransform && "text-transform: " + textTransform + ";";
 }, styledSystem.space);
 Text.defaultProps = {
     color: "text",
@@ -160,7 +162,7 @@ var getDisabledStyles = function (_a) {
     if (isLoading === true) {
         return "\n      &:disabled,\n      &.button--disabled {\n        cursor: not-allowed;\n      }\n    ";
     }
-    return "\n    &:disabled,\n    &.button--disabled {\n      background-color: ".concat(theme.colors.backgroundDisabled, ";\n      border-color: ").concat(theme.colors.backgroundDisabled, ";\n      box-shadow: none;\n      color: ").concat(theme.colors.textDisabled, ";\n      cursor: not-allowed;\n    }\n  ");
+    return "\n    &:disabled,\n    &.button--disabled {\n      background-color: " + theme.colors.backgroundDisabled + ";\n      border-color: " + theme.colors.backgroundDisabled + ";\n      box-shadow: none;\n      color: " + theme.colors.textDisabled + ";\n      cursor: not-allowed;\n    }\n  ";
 };
 var removePointerEvents = function (_a) {
     var disabled = _a.disabled, as = _a.as;
@@ -599,7 +601,7 @@ var IconLabel = styled__default["default"].div(templateObject_1$F || (templateOb
 var withHandlerSpacing = 32 + 12 + 8; // button size + inner spacing + handler position
 var Details = styled__default["default"].div(templateObject_2$f || (templateObject_2$f = __makeTemplateObject(["\n  flex: 1;\n  padding-bottom: 12px;\n  padding-left: 12px;\n  padding-right: ", ";\n  padding-top: 12px;\n"], ["\n  flex: 1;\n  padding-bottom: 12px;\n  padding-left: 12px;\n  padding-right: ", ";\n  padding-top: 12px;\n"])), function (_a) {
     var hasHandler = _a.hasHandler;
-    return (hasHandler ? "".concat(withHandlerSpacing, "px") : "12px");
+    return (hasHandler ? withHandlerSpacing + "px" : "12px");
 });
 var CloseHandler = styled__default["default"].div(templateObject_3$7 || (templateObject_3$7 = __makeTemplateObject(["\n  border-radius: 0 16px 16px 0;\n  right: 8px;\n  position: absolute;\n  top: 8px;\n"], ["\n  border-radius: 0 16px 16px 0;\n  right: 8px;\n  position: absolute;\n  top: 8px;\n"])));
 var StyledAlert = styled__default["default"](Flex)(templateObject_4$3 || (templateObject_4$3 = __makeTemplateObject(["\n  position: relative;\n  background-color: ", ";\n  border-radius: 16px;\n  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);\n"], ["\n  position: relative;\n  background-color: ", ";\n  border-radius: 16px;\n  box-shadow: 0px 20px 36px -8px rgba(14, 14, 44, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);\n"])), function (_a) {
@@ -638,7 +640,7 @@ var insertSeparators = function (items, separator) {
             return __spreadArray(__spreadArray([], accum, true), [item], false);
         }
         return __spreadArray(__spreadArray([], accum, true), [
-            React__default["default"].createElement(Separator, { "aria-hidden": true, key: "seperator-".concat(index) }, separator),
+            React__default["default"].createElement(Separator, { "aria-hidden": true, key: "seperator-" + index }, separator),
             item,
         ], false);
     }, []);
@@ -648,7 +650,7 @@ var Breadcrumbs = function (_a) {
     var _b = _a.separator, separator = _b === void 0 ? DefaultSeparator : _b, children = _a.children;
     var validItems = React.Children.toArray(children).filter(function (child) { return React.isValidElement(child); });
     var items = insertSeparators(validItems, separator);
-    return (React__default["default"].createElement(StyledBreadcrumbs, null, items.map(function (item, index) { return (React__default["default"].createElement("li", { key: "child-".concat(index) }, item)); })));
+    return (React__default["default"].createElement(StyledBreadcrumbs, null, items.map(function (item, index) { return (React__default["default"].createElement("li", { key: "child-" + index }, item)); })));
 };
 var templateObject_1$E, templateObject_2$e;
 
@@ -910,7 +912,7 @@ var BackgroundImage = function (_a) {
             entries.forEach(function (entry) {
                 var isIntersecting = entry.isIntersecting;
                 if (isIntersecting) {
-                    img.style.backgroundImage = "url(\"".concat(src, "\")");
+                    img.style.backgroundImage = "url(\"" + src + "\")";
                     observer.disconnect();
                 }
             });
@@ -1075,7 +1077,7 @@ Radio.defaultProps = {
 var templateObject_1$o;
 
 var getColor = function (color, theme) {
-    return getThemeValue("colors.".concat(color), color)(theme);
+    return getThemeValue("colors." + color, color)(theme);
 };
 
 var getThemeTextColor = function (_a) {
@@ -1124,7 +1126,7 @@ var LinkExternal = function (_a) {
         React__default["default"].createElement(Icon$I, { color: "primary", ml: "4px" })));
 };
 
-var Bar = styled__default["default"].div(templateObject_1$l || (templateObject_1$l = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"])), function (props) { return (props.primary ? props.theme.colors.secondary : "".concat(props.theme.colors.secondary, "80")); });
+var Bar = styled__default["default"].div(templateObject_1$l || (templateObject_1$l = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: ", ";\n  border-top-left-radius: 32px;\n  border-bottom-left-radius: 32px;\n  height: 16px;\n  transition: width 200ms ease;\n"])), function (props) { return (props.primary ? props.theme.colors.secondary : props.theme.colors.secondary + "80"); });
 Bar.defaultProps = {
     primary: false,
 };
@@ -1152,10 +1154,10 @@ var stepGuard = function (step) {
 var Progress = function (_a) {
     var _b = _a.primaryStep, primaryStep = _b === void 0 ? 0 : _b, _c = _a.secondaryStep, secondaryStep = _c === void 0 ? null : _c, _d = _a.showProgressBunny, showProgressBunny = _d === void 0 ? false : _d;
     return (React__default["default"].createElement(StyledProgress, null,
-        showProgressBunny && (React__default["default"].createElement(ProgressBunnyWrapper, { style: { left: "".concat(stepGuard(primaryStep), "%") } },
+        showProgressBunny && (React__default["default"].createElement(ProgressBunnyWrapper, { style: { left: stepGuard(primaryStep) + "%" } },
             React__default["default"].createElement(Icon$B, null))),
-        React__default["default"].createElement(Bar, { primary: true, style: { width: "".concat(stepGuard(primaryStep), "%") } }),
-        secondaryStep ? React__default["default"].createElement(Bar, { style: { width: "".concat(stepGuard(secondaryStep), "%") } }) : null));
+        React__default["default"].createElement(Bar, { primary: true, style: { width: stepGuard(primaryStep) + "%" } }),
+        secondaryStep ? React__default["default"].createElement(Bar, { style: { width: stepGuard(secondaryStep) + "%" } }) : null));
 };
 
 var rotate = styled.keyframes(templateObject_1$j || (templateObject_1$j = __makeTemplateObject(["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"], ["\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n"])));
@@ -1168,7 +1170,7 @@ var RotatingPancakeIcon = styled__default["default"](SpinnerIcon)(templateObject
 var Spinner = function (_a) {
     var _b = _a.size, size = _b === void 0 ? 128 : _b;
     return (React__default["default"].createElement(Container$3, null,
-        React__default["default"].createElement(RotatingPancakeIcon, { width: "".concat(size * 0.5, "px") })));
+        React__default["default"].createElement(RotatingPancakeIcon, { width: size * 0.5 + "px" })));
 };
 var templateObject_1$j, templateObject_2$a, templateObject_3$6;
 
@@ -1331,7 +1333,7 @@ var createReducer = function () { return function (state, action) {
             return __assign(__assign({}, state), { rows: getPaginatedData(state.originalRows, state.pagination.perPage, prevPage), pagination: __assign(__assign({}, state.pagination), { page: prevPage, canNext: prevPage * state.pagination.perPage < state.originalRows.length, canPrev: prevPage !== 1 }) });
         case "TOGGLE_SORT":
             if (!(action.columnName in state.columnsByName)) {
-                throw new Error("Invalid column, ".concat(action.columnName, " not found"));
+                throw new Error("Invalid column, " + action.columnName + " not found");
             }
             // loop through all columns and set the sort parameter to off unless
             // it's the specified column (only one column at a time for )
@@ -1441,7 +1443,7 @@ var sortDataInOrder = function (data, columns) {
         var newRow = {};
         columns.forEach(function (column) {
             if (!(column.name in row)) {
-                throw new Error("Invalid row data, ".concat(column.name, " not found"));
+                throw new Error("Invalid row data, " + column.name + " not found");
             }
             newRow[column.name] = row[column.name];
         });
@@ -1555,14 +1557,14 @@ var breakpointMap = {
     lg: 968,
     xl: 1080,
 };
-var breakpoints = Object.values(breakpointMap).map(function (breakpoint) { return "".concat(breakpoint, "px"); });
+var breakpoints = Object.values(breakpointMap).map(function (breakpoint) { return breakpoint + "px"; });
 var mediaQueries$1 = {
-    xs: "@media screen and (min-width: ".concat(breakpointMap.xs, "px)"),
-    sm: "@media screen and (min-width: ".concat(breakpointMap.sm, "px)"),
-    md: "@media screen and (min-width: ".concat(breakpointMap.md, "px)"),
-    lg: "@media screen and (min-width: ".concat(breakpointMap.lg, "px)"),
-    xl: "@media screen and (min-width: ".concat(breakpointMap.xl, "px)"),
-    nav: "@media screen and (min-width: ".concat(breakpointMap.lg, "px)"),
+    xs: "@media screen and (min-width: " + breakpointMap.xs + "px)",
+    sm: "@media screen and (min-width: " + breakpointMap.sm + "px)",
+    md: "@media screen and (min-width: " + breakpointMap.md + "px)",
+    lg: "@media screen and (min-width: " + breakpointMap.lg + "px)",
+    xl: "@media screen and (min-width: " + breakpointMap.xl + "px)",
+    nav: "@media screen and (min-width: " + breakpointMap.lg + "px)",
 };
 var shadows = {
     level1: "0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05)",
@@ -1607,16 +1609,16 @@ var mediaQueries = (function () {
         var _a, _b;
         // Largest size is just a min-width of second highest max-width
         if (index === Object.keys(breakpointMap).length - 1) {
-            return __assign(__assign({}, accum), (_a = {}, _a[size] = "(min-width: ".concat(prevMinWidth, "px)"), _a));
+            return __assign(__assign({}, accum), (_a = {}, _a[size] = "(min-width: " + prevMinWidth + "px)", _a));
         }
         var minWidth = prevMinWidth;
         var breakpoint = breakpointMap[size];
         // Min width for next iteration
         prevMinWidth = breakpoint + 1;
-        return __assign(__assign({}, accum), (_b = {}, _b[size] = "(min-width: ".concat(minWidth, "px) and (max-width: ").concat(breakpoint, "px)"), _b));
+        return __assign(__assign({}, accum), (_b = {}, _b[size] = "(min-width: " + minWidth + "px) and (max-width: " + breakpoint + "px)", _b));
     }, {});
 })();
-var getKey = function (size) { return "is".concat(size.charAt(0).toUpperCase()).concat(size.slice(1)); };
+var getKey = function (size) { return "is" + size.charAt(0).toUpperCase() + size.slice(1); };
 var useMatchBreakpoints = function () {
     var _a = React.useState(function () {
         return Object.keys(mediaQueries).reduce(function (accum, size) {
@@ -1674,21 +1676,21 @@ var createParticle = function (x, y, imgSrc, options) {
     var delay = Math.random() * 200;
     particle.style.backgroundRepeat = "no-repeat";
     particle.style.backgroundSize = "contain";
-    particle.style.backgroundImage = "url(".concat(imgSrc, ")");
+    particle.style.backgroundImage = "url(" + imgSrc + ")";
     particle.style.left = "0";
     particle.style.top = "0";
     particle.style.opacity = "0";
     particle.style.pointerEvents = "none";
     particle.style.position = "fixed";
-    particle.style.width = "".concat(width, "px");
-    particle.style.height = "".concat(height, "px");
+    particle.style.width = width + "px";
+    particle.style.height = height + "px";
     var animation = particle.animate([
         {
-            transform: "translate(-50%, -50%) translate(".concat(x, "px, ").concat(y, "px) rotate(0deg)"),
+            transform: "translate(-50%, -50%) translate(" + x + "px, " + y + "px) rotate(0deg)",
             opacity: 1,
         },
         {
-            transform: "translate(-50%, -50%) translate(".concat(x + destinationX, "px, ").concat(y + destinationY, "px) rotate(").concat(rotation, "deg)"),
+            transform: "translate(-50%, -50%) translate(" + (x + destinationX) + "px, " + (y + destinationY) + "px) rotate(" + rotation + "deg)",
             opacity: 0,
         },
     ], {
@@ -2282,7 +2284,7 @@ var MenuEntry = styled__default["default"].div(templateObject_3$2 || (templateOb
     return (isActive ? 'rgba(206, 33, 121, 0.1)' : null);
 }, function (_a) {
     var isActive = _a.isActive, theme = _a.theme;
-    return (isActive ? "inset 4px 0px 0px ".concat(theme.colors.primary) : "none");
+    return (isActive ? "inset 4px 0px 0px " + theme.colors.primary : "none");
 }, function (_a) {
     var theme = _a.theme;
     return theme.colors.textSubtle;
@@ -2303,7 +2305,7 @@ var templateObject_1$b, templateObject_2$6, templateObject_3$2;
 var Container$2 = styled__default["default"].div(templateObject_1$a || (templateObject_1$a = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  // Safari fix\n  flex-shrink: 0;\n"], ["\n  display: flex;\n  flex-direction: column;\n  // Safari fix\n  flex-shrink: 0;\n"])));
 var AccordionContent = styled__default["default"].div(templateObject_2$5 || (templateObject_2$5 = __makeTemplateObject(["\n  max-height: ", ";\n  transition: max-height 0.3s ease-out;\n  overflow: hidden;\n  border-color: ", ";\n  border-style: solid;\n  border-width: 1px;\n"], ["\n  max-height: ", ";\n  transition: max-height 0.3s ease-out;\n  overflow: hidden;\n  border-color: ", ";\n  border-style: solid;\n  border-width: 1px;\n"])), function (_a) {
     var isOpen = _a.isOpen, maxHeight = _a.maxHeight;
-    return (isOpen ? "".concat(maxHeight, "px") : 0);
+    return (isOpen ? maxHeight + "px" : 0);
 }, function (_a) {
     var isOpen = _a.isOpen, isPushed = _a.isPushed;
     return (isOpen && isPushed ? "rgba(133, 133, 133, 0.1)" : "transparent");
@@ -2371,7 +2373,7 @@ var PanelBody = function (_a) {
                 paddingBottom: "32px"
             } }, cakePriceUsd ? (React__default["default"].createElement(PriceLink, { href: priceLink, target: "_blank" },
             React__default["default"].createElement(Icon$G, { width: "24px", mr: "8px" }),
-            React__default["default"].createElement(Text, { color: "textSubtle", bold: true }, "$".concat(cakePriceUsd.toFixed(3))))) : (React__default["default"].createElement(Skeleton, { width: 80, height: 24 })))));
+            React__default["default"].createElement(Text, { color: "textSubtle", bold: true }, "$" + cakePriceUsd.toFixed(3)))) : (React__default["default"].createElement(Skeleton, { width: 80, height: 24 })))));
 };
 var templateObject_1$9, templateObject_2$4;
 
@@ -2426,7 +2428,7 @@ var StyledPanel = styled__default["default"].div(templateObject_1$7 || (template
     return theme.nav.background;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return (isPushed ? "".concat(SIDEBAR_WIDTH_FULL, "px") : 0);
+    return (isPushed ? SIDEBAR_WIDTH_FULL + "px" : 0);
 }, function (_a) {
     var isPushed = _a.isPushed;
     return (isPushed ? "1px solid rgba(255, 255, 255, 0.25)" : 0);
@@ -2438,7 +2440,7 @@ var StyledPanel = styled__default["default"].div(templateObject_1$7 || (template
     return theme.mediaQueries.nav;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return "".concat(isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED, "px");
+    return (isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED) + "px";
 });
 var Panel = function (props) {
     var isPushed = props.isPushed, showMenu = props.showMenu;
@@ -2488,36 +2490,45 @@ var Icon$1 = function (props) {
         React__default["default"].createElement("path", { d: "M29.6927 35.4245C39.8036 25.5252 56.1965 25.5252 66.3074 35.4245L67.5242 36.6159C68.0298 37.1109 68.0298 37.9134 67.5242 38.4084L63.3616 42.4839C63.1088 42.7314 62.699 42.7314 62.4462 42.4839L60.7717 40.8444C53.7181 33.9384 42.282 33.9384 35.2284 40.8444L33.4351 42.6002C33.1823 42.8477 32.7725 42.8477 32.5197 42.6002L28.3571 38.5247C27.8515 38.0297 27.8515 37.2272 28.3571 36.7322L29.6927 35.4245ZM74.9161 43.8532L78.6208 47.4805C79.1264 47.9755 79.1264 48.778 78.6208 49.2729L61.9159 65.6288C61.4103 66.1237 60.5907 66.1237 60.0851 65.6288C60.0851 65.6288 60.0851 65.6288 60.0851 65.6288L48.229 54.0206C48.1026 53.8968 47.8977 53.8968 47.7713 54.0206C47.7713 54.0206 47.7713 54.0206 47.7713 54.0206L35.9153 65.6288C35.4098 66.1237 34.5902 66.1237 34.0846 65.6288C34.0846 65.6288 34.0846 65.6288 34.0846 65.6288L17.3792 49.2727C16.8736 48.7778 16.8736 47.9753 17.3792 47.4803L21.0839 43.853C21.5895 43.3581 22.4091 43.3581 22.9146 43.853L34.771 55.4614C34.8974 55.5851 35.1023 55.5851 35.2287 55.4614C35.2287 55.4614 35.2287 55.4614 35.2287 55.4614L47.0844 43.853C47.59 43.358 48.4096 43.358 48.9152 43.853C48.9152 43.853 48.9152 43.853 48.9152 43.853L60.7715 55.4614C60.8979 55.5851 61.1028 55.5851 61.2292 55.4614L73.0854 43.8532C73.5909 43.3583 74.4105 43.3583 74.9161 43.8532Z", fill: "white" })));
 };
 
+var injected = new injectedConnector.InjectedConnector({ supportedChainIds: [56] });
+var walletconnect = new walletconnectConnector.WalletConnectConnector({
+    rpc: {
+        56: 'https://bsc-dataseed.binance.org/'
+    },
+    bridge: 'https://bridge.walletconnect.org',
+    qrcode: true,
+});
 var connectors = [
     {
         title: "Metamask",
         icon: Icon$2,
-        connectorId: "injected",
+        connectorId: injected,
     },
     {
         title: "WalletConnect",
         icon: Icon$1,
-        connectorId: "walletconnect",
+        connectorId: walletconnect,
     },
 ];
 var localStorageKey = "accountStatus";
 
 var WalletCard = function (_a) {
-    var login = _a.login, walletConfig = _a.walletConfig, onDismiss = _a.onDismiss, mb = _a.mb;
+    var activate = _a.activate, connector = _a.connector, walletConfig = _a.walletConfig, onDismiss = _a.onDismiss, mb = _a.mb;
     var title = walletConfig.title, Icon = walletConfig.icon;
+    console.log("activate:", activate, connector);
     return (React__default["default"].createElement(Button, { fullWidth: true, variant: "primary", onClick: function () {
-            login(walletConfig.connectorId);
+            activate(connector);
             window.localStorage.setItem(localStorageKey, "1");
             onDismiss();
-        }, style: { justifyContent: "space-between" }, mb: mb, id: "wallet-connect-".concat(title.toLocaleLowerCase()) },
+        }, style: { justifyContent: "space-between" }, mb: mb, id: "wallet-connect-" + title.toLocaleLowerCase() },
         React__default["default"].createElement(Text, { bold: true, color: "white", mr: "16px" }, title),
         React__default["default"].createElement(Icon, { width: "32px" })));
 };
 
 styled__default["default"](Link)(templateObject_1$6 || (templateObject_1$6 = __makeTemplateObject(["\n  display: flex;\n  align-self: center;\n  align-items: center;\n  margin-top: 24px;\n"], ["\n  display: flex;\n  align-self: center;\n  align-items: center;\n  margin-top: 24px;\n"])));
 var ConnectModal = function (_a) {
-    var login = _a.login, _b = _a.onDismiss, onDismiss = _b === void 0 ? function () { return null; } : _b;
-    return (React__default["default"].createElement(Modal, { title: "Connect to a wallet", onDismiss: onDismiss }, connectors.map(function (entry, index) { return (React__default["default"].createElement(WalletCard, { key: entry.title, login: login, walletConfig: entry, onDismiss: onDismiss, mb: index < connectors.length - 1 ? "20px" : "0" })); })));
+    var activate = _a.activate, _b = _a.onDismiss, onDismiss = _b === void 0 ? function () { return null; } : _b;
+    return (React__default["default"].createElement(Modal, { title: "Connect to a wallet", onDismiss: onDismiss }, connectors.map(function (entry, index) { return (React__default["default"].createElement(WalletCard, { key: entry.title, activate: activate, connector: entry.connectorId, walletConfig: entry, onDismiss: onDismiss, mb: index < connectors.length - 1 ? "20px" : "0" })); })));
 };
 var templateObject_1$6;
 
@@ -2558,7 +2569,7 @@ var AccountModal = function (_a) {
     return (React__default["default"].createElement(Modal, { title: "Your wallet", onDismiss: onDismiss },
         React__default["default"].createElement(Text, { fontSize: "20px", bold: true, style: { width: '100%', whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginBottom: "8px" } }, account),
         React__default["default"].createElement(Flex, { mb: "32px" },
-            React__default["default"].createElement(LinkExternal, { small: true, href: "https://bscscan.com/address/".concat(account), mr: "16px" }, "View on BscScan"),
+            React__default["default"].createElement(LinkExternal, { small: true, href: "https://bscscan.com/address/" + account, mr: "16px" }, "View on BscScan"),
             React__default["default"].createElement(CopyToClipboard, { toCopy: account }, "Copy Address")),
         React__default["default"].createElement(Flex, { justifyContent: "center" },
             React__default["default"].createElement(Button, { size: "sm", variant: "secondary", onClick: function () {
@@ -2569,16 +2580,16 @@ var AccountModal = function (_a) {
                 } }, "Logout"))));
 };
 
-var useWalletModal = function (login, logout, account) {
-    var onPresentConnectModal = useModal(React__default["default"].createElement(ConnectModal, { login: login }))[0];
+var useWalletModal = function (activate, logout, account) {
+    var onPresentConnectModal = useModal(React__default["default"].createElement(ConnectModal, { activate: activate }))[0];
     var onPresentAccountModal = useModal(React__default["default"].createElement(AccountModal, { account: account || "", logout: logout }))[0];
     return { onPresentConnectModal: onPresentConnectModal, onPresentAccountModal: onPresentAccountModal };
 };
 
 var UserBlock = function (_a) {
-    var account = _a.account, login = _a.login, logout = _a.logout;
-    var _b = useWalletModal(login, logout, account), onPresentConnectModal = _b.onPresentConnectModal, onPresentAccountModal = _b.onPresentAccountModal;
-    var accountEllipsis = account ? "".concat(account.substring(0, 4), "...").concat(account.substring(account.length - 4)) : null;
+    var account = _a.account, activate = _a.activate, logout = _a.logout;
+    var _b = useWalletModal(activate, logout, account), onPresentConnectModal = _b.onPresentConnectModal, onPresentAccountModal = _b.onPresentAccountModal;
+    var accountEllipsis = account ? account.substring(0, 4) + "..." + account.substring(account.length - 4) : null;
     return (React__default["default"].createElement("div", null, account ? (React__default["default"].createElement(Button, { size: "sm", variant: "tertiary", onClick: function () {
             onPresentAccountModal();
         } }, accountEllipsis)) : (React__default["default"].createElement(Button, { size: "sm", onClick: function () {
@@ -2627,7 +2638,7 @@ var templateObject_1$4, templateObject_2$1;
 var Wrapper = styled__default["default"].div(templateObject_1$3 || (templateObject_1$3 = __makeTemplateObject(["\n  position: relative;\n  width: 100%;\n"], ["\n  position: relative;\n  width: 100%;\n"])));
 var StyledNav = styled__default["default"].nav(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  position: fixed;\n  font-family: -apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Roboto\",\"Oxygen\",\"Ubuntu\",\"Cantarell\",\"Fira Sans\",\"Droid Sans\",\"Helvetica Neue\",sans-serif !important;\n  top: ", ";\n  left: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 24px;\n  padding-right: 24px;\n  padding-top: 16px;\n  padding-bottom: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 1px rgba(255, 255, 255, 0.25);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n"], ["\n  position: fixed;\n  font-family: -apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Roboto\",\"Oxygen\",\"Ubuntu\",\"Cantarell\",\"Fira Sans\",\"Droid Sans\",\"Helvetica Neue\",sans-serif !important;\n  top: ", ";\n  left: 0;\n  transition: top 0.2s;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding-left: 24px;\n  padding-right: 24px;\n  padding-top: 16px;\n  padding-bottom: 16px;\n  width: 100%;\n  height: ", "px;\n  background-color: ", ";\n  border-bottom: solid 1px rgba(255, 255, 255, 0.25);\n  z-index: 20;\n  transform: translate3d(0, 0, 0);\n"])), function (_a) {
     var showMenu = _a.showMenu;
-    return (showMenu ? 0 : "-".concat(MENU_HEIGHT, "px"));
+    return (showMenu ? 0 : "-" + MENU_HEIGHT + "px");
 }, MENU_HEIGHT, function (_a) {
     var theme = _a.theme;
     return theme.nav.background;
@@ -2635,13 +2646,13 @@ var StyledNav = styled__default["default"].nav(templateObject_2 || (templateObje
 var BodyWrapper = styled__default["default"].div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n"], ["\n  position: relative;\n  display: flex;\n"])));
 var Inner = styled__default["default"].div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  flex-grow: 1;\n  margin-top: ", ";\n  transition: margin-top 0.2s;\n  transform: translate3d(0, 0, 0);\n  ", " {\n    margin-left: ", ";\n  }\n"], ["\n  flex-grow: 1;\n  margin-top: ", ";\n  transition: margin-top 0.2s;\n  transform: translate3d(0, 0, 0);\n  ", " {\n    margin-left: ", ";\n  }\n"])), function (_a) {
     var showMenu = _a.showMenu;
-    return (showMenu ? "".concat(MENU_HEIGHT, "px") : 0);
+    return (showMenu ? MENU_HEIGHT + "px" : 0);
 }, function (_a) {
     var theme = _a.theme;
     return theme.mediaQueries.nav;
 }, function (_a) {
     var isPushed = _a.isPushed;
-    return "".concat(isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED, "px");
+    return (isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED) + "px";
 });
 var MobileOnlyOverlay = styled__default["default"](Overlay)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  position: fixed;\n  height: 100%;\n\n  ", " {\n    display: none;\n  }\n"], ["\n  position: fixed;\n  height: 100%;\n\n  ", " {\n    display: none;\n  }\n"])), function (_a) {
     var theme = _a.theme;
@@ -2649,7 +2660,7 @@ var MobileOnlyOverlay = styled__default["default"](Overlay)(templateObject_5 || 
 });
 var Menu = function (_a) {
     var _b;
-    var account = _a.account, login = _a.login, logout = _a.logout; _a.isDark; var toggleTheme = _a.toggleTheme, langs = _a.langs, setLang = _a.setLang, currentLang = _a.currentLang, cakePriceUsd = _a.cakePriceUsd, links = _a.links, priceLink = _a.priceLink, profile = _a.profile, children = _a.children;
+    var account = _a.account, activate = _a.activate, logout = _a.logout; _a.isDark; var toggleTheme = _a.toggleTheme, langs = _a.langs, setLang = _a.setLang, currentLang = _a.currentLang, cakePriceUsd = _a.cakePriceUsd, links = _a.links, priceLink = _a.priceLink, profile = _a.profile, children = _a.children;
     var isXl = useMatchBreakpoints().isXl;
     var isMobile = isXl === false;
     var _c = React.useState(!isMobile), isPushed = _c[0], setIsPushed = _c[1];
@@ -2680,7 +2691,7 @@ var Menu = function (_a) {
         React__default["default"].createElement(StyledNav, { showMenu: showMenu },
             React__default["default"].createElement(Logo, { isPushed: isPushed, togglePush: function () { return setIsPushed(function (prevState) { return !prevState; }); }, isDark: true, href: (_b = homeLink === null || homeLink === void 0 ? void 0 : homeLink.href) !== null && _b !== void 0 ? _b : "/" }),
             React__default["default"].createElement(Flex, null,
-                React__default["default"].createElement(UserBlock, { account: account, login: login, logout: logout }),
+                React__default["default"].createElement(UserBlock, { account: account, activate: activate, logout: logout }),
                 profile && React__default["default"].createElement(Avatar, { profile: profile }))),
         React__default["default"].createElement(BodyWrapper, null,
             React__default["default"].createElement(Panel, { isPushed: isPushed, isMobile: isMobile, showMenu: showMenu, isDark: true, toggleTheme: toggleTheme, langs: langs, setLang: setLang, currentLang: currentLang, cakePriceUsd: cakePriceUsd, pushNav: setIsPushed, links: links, priceLink: priceLink }),
@@ -2761,7 +2772,7 @@ var ToastContainer = function (_a) {
         React__default["default"].createElement(reactTransitionGroup.TransitionGroup, null, toasts.map(function (toast, index) {
             var zIndex = (ZINDEX - index).toString();
             var top = TOP_POSITION + index * stackSpacing;
-            return (React__default["default"].createElement(Toast, { key: toast.id, toast: toast, onRemove: onRemove, ttl: ttl, style: { top: "".concat(top, "px"), zIndex: zIndex } }));
+            return (React__default["default"].createElement(Toast, { key: toast.id, toast: toast, onRemove: onRemove, ttl: ttl, style: { top: top + "px", zIndex: zIndex } }));
         }))));
 };
 var templateObject_1$1;
@@ -2819,7 +2830,7 @@ var light$5 = (_a = {},
         background: "transparent",
         backgroundActive: "transparent",
         backgroundHover: "transparent",
-        border: "2px solid ".concat(lightColors.primary),
+        border: "2px solid " + lightColors.primary,
         borderColorHover: lightColors.primaryBright,
         boxShadow: "none",
         boxShadowActive: "none",
@@ -2857,8 +2868,8 @@ var light$5 = (_a = {},
     },
     _a[SUBTLE] = {
         background: lightColors.textSubtle,
-        backgroundActive: "".concat(lightColors.textSubtle, "D9"),
-        backgroundHover: "".concat(lightColors.textSubtle, "B3"),
+        backgroundActive: lightColors.textSubtle + "D9",
+        backgroundHover: lightColors.textSubtle + "B3",
         border: 0,
         borderColorHover: "currentColor",
         boxShadow: "none",
@@ -2867,8 +2878,8 @@ var light$5 = (_a = {},
     },
     _a[SUCCESS] = {
         background: lightColors.success,
-        backgroundActive: "".concat(lightColors.success, "D9"),
-        backgroundHover: "".concat(lightColors.success, "B3"),
+        backgroundActive: lightColors.success + "D9",
+        backgroundHover: lightColors.success + "B3",
         border: 0,
         borderColorHover: "currentColor",
         boxShadow: "none",

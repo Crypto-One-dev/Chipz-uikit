@@ -13,10 +13,11 @@ export type ConnectorId =
   | "walletlink"
   | "bsc";
 
-export type Login = (connectorId: ConnectorId) => void;
+
+export type Login = (connectorId: any) => void;
 
 export interface Config {
   title: string;
   icon: FC<SvgProps>;
-  connectorId: ConnectorId;
+  connectorId: any;
 }

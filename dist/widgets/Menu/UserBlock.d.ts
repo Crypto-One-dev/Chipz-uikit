@@ -1,8 +1,7 @@
 import React from "react";
-import { Login } from "../WalletModal/types";
 interface Props {
     account?: string;
-    login: Login;
+    activate: any;
     logout: () => void;
 }
 declare const UserBlock: React.FC<Props>;

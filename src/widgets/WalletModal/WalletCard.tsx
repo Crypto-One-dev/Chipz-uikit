@@ -6,19 +6,21 @@ import { Login, Config } from "./types";
 
 interface Props {
   walletConfig: Config;
-  login: Login;
+  activate: any;
+  connector: any;
   onDismiss: () => void;
   mb: string;
 }
 
-const WalletCard: React.FC<Props> = ({ login, walletConfig, onDismiss, mb }) => {
+const WalletCard: React.FC<Props> = ({ activate, connector, walletConfig, onDismiss, mb }) => {
   const { title, icon: Icon } = walletConfig;
+  console.log("activate:", activate, connector);
   return (
     <Button
       fullWidth
       variant="primary"
       onClick={() => {
-        login(walletConfig.connectorId);
+        activate(connector);
         window.localStorage.setItem(localStorageKey, "1");
         onDismiss();
       }}
